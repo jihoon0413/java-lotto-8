@@ -11,4 +11,7 @@ public class InputPriceDto {
         return new InputPriceDto(price);
     }
 
+    public int getPrice() {
+        return price;
+    }
 }

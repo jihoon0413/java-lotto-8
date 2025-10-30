@@ -6,6 +6,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        validateDup(numbers);
         validate(numbers);
         this.numbers = numbers;
     }
@@ -16,5 +17,17 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void validateDup(List<Integer> numbers) {
+        if(numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않는 6개의 숫자여야 합니다.");
+        }
+    }
+
+    public String getNumbersToString() {
+        return String.join(", ", numbers.stream().map(String::valueOf).toList());
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
