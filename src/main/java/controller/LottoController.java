@@ -1,23 +1,26 @@
 package controller;
 
-import domain.LottoMachine;
 import dto.InputPriceDto;
 import dto.WinningNumbersResponse;
+import dto.WinningRecordDto;
 import java.util.List;
 import lotto.Lotto;
+import service.LottoService;
 import view.InputView;
 import view.OutPutView;
 
 public class LottoController {
 
     private final InputView inputView = new InputView();
-    private final LottoMachine lottoMachine = new LottoMachine();
+    private final LottoService lottoService = new LottoService();
     private final OutPutView outPutView = new OutPutView();
 
     public void run() {
-        InputPriceDto dto = inputView.getInputPrice();
-        List<Lotto> lottos = lottoMachine.createLottos(dto);
+        InputPriceDto payment = inputView.getInputPrice();
+        List<Lotto> lottos = lottoService.publishLotto(payment);
         outPutView.printLottos(lottos);
+
         WinningNumbersResponse winningNumbersResponse = inputView.getWinningNumbersResponse();
+        WinningRecordDto winningRecord = lottoService.getWinningRecord(winningNumbersResponse, lottos);
     }
 }
