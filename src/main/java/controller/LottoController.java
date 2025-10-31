@@ -15,22 +15,9 @@ public class LottoController {
     private final OutPutView outPutView = new OutPutView();
 
     public void run() {
-        InputPriceDto dto = inputPrice();
+        InputPriceDto dto = inputView.getInputPrice();
         List<Lotto> lottos = lottoMachine.createLottos(dto);
         outPutView.printLottos(lottos);
         WinningNumbersResponse winningNumbersResponse = inputView.getWinningNumbersResponse();
-    }
-
-    private InputPriceDto inputPrice() {
-        InputPriceDto dto;
-        while (true) {
-            try {
-                 dto = inputView.getInputPrice();
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-                continue;
-            }
-            return dto;
-        }
     }
 }

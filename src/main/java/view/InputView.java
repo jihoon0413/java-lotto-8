@@ -14,10 +14,16 @@ public class InputView {
     private final Splitter splitter = new Splitter();
 
     public InputPriceDto getInputPrice() {
-        System.out.println("구입금액을 입력해 주세요.");
-        String input = Console.readLine();
-        validate(input);
-        return InputPriceDto.of(Integer.parseInt(input));
+        while(true) {
+            try{
+                System.out.println("구입금액을 입력해 주세요.");
+                String input = Console.readLine();
+                validate(input);
+                return InputPriceDto.of(Integer.parseInt(input));
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     private void validate(String input) {
