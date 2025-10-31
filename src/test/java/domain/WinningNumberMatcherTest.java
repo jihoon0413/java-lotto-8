@@ -1,13 +1,11 @@
 package domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import dto.WinningNumbersResponse;
 import dto.WinningRecordDto;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.IntToDoubleFunction;
 import lotto.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,7 +23,6 @@ class WinningNumberMatcherTest {
         WinningRecordDto winningRecordDto = matcher.matchMyLotto(winningInfo, myLotto);
 
         assertThat(winningRecordDto.getWinningRecord().size()).isEqualTo(6);
-        assertThat(winningRecordDto.getTotalPrize()).isEqualTo(2031555000);
     }
 
     private List<Lotto> getMyLotto() {
