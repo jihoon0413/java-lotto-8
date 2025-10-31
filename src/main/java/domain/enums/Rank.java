@@ -11,9 +11,9 @@ public enum Rank {
 
     private int matchCount;
     private boolean matchBonus;
-    private double prize;
+    private int prize;
 
-    Rank(int matchCount, boolean matchBonus, double prize) {
+    Rank(int matchCount, boolean matchBonus, int prize) {
         this.matchCount = matchCount;
         this.matchBonus = matchBonus;
         this.prize = prize;
@@ -39,4 +39,8 @@ public enum Rank {
         }
         return NO_MATCH;
     }
+
+    public static final Rank[] ranks = {
+            FIFTH, FORTH, THIRD, SECOND, FIRST
+    };
 }
