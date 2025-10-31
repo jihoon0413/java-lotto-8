@@ -1,13 +1,26 @@
 package domain;
 
+import domain.enums.Rank;
 import dto.InputPriceDto;
 import dto.WinningRecordDto;
+import java.util.Map;
+import java.util.Set;
 
 public class ProfitCalculator {
 
-    public double calculateProfit(WinningRecordDto winningRecord, InputPriceDto inputPrice) {
+    public String calculateProfit(WinningRecordDto winningRecord, InputPriceDto inputPrice) {
+        double totalPrize = getTotalPrize(winningRecord.getWinningRecord());
+        double profitRate = totalPrize / inputPrice.getPrice() * 100;
+        return String.format("%.1f", profitRate);
+    }
 
-        return 0.0;
+    public double getTotalPrize(Map<Rank, Integer> winningRecord) {
+        Set<Rank> ranks = winningRecord.keySet();
+        double totalPrize = 0;
+        for (Rank rank : ranks) {
+            totalPrize += (rank.getPrize() * winningRecord.get(rank));
+        }
+        return totalPrize;
     }
 
 }

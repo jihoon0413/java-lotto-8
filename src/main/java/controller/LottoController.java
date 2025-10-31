@@ -16,11 +16,12 @@ public class LottoController {
     private final OutPutView outPutView = new OutPutView();
 
     public void run() {
-        InputPriceDto payment = inputView.getInputPrice();
-        List<Lotto> lottos = lottoService.publishLotto(payment);
+        InputPriceDto inputPrice = inputView.getInputPrice();
+        List<Lotto> lottos = lottoService.publishLotto(inputPrice);
         outPutView.printLottos(lottos);
 
         WinningNumbersResponse winningNumbersResponse = inputView.getWinningNumbersResponse();
         WinningRecordDto winningRecord = lottoService.getWinningRecord(winningNumbersResponse, lottos);
+        String profitRate = lottoService.calculateProfitRate(winningRecord, inputPrice);
     }
 }
