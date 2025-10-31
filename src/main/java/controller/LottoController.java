@@ -2,6 +2,7 @@ package controller;
 
 import domain.LottoMachine;
 import dto.InputPriceDto;
+import dto.WinningNumbersResponse;
 import java.util.List;
 import lotto.Lotto;
 import view.InputView;
@@ -14,12 +15,13 @@ public class LottoController {
     private final OutPutView outPutView = new OutPutView();
 
     public void run() {
-        InputPriceDto dto = temp();
+        InputPriceDto dto = inputPrice();
         List<Lotto> lottos = lottoMachine.createLottos(dto);
         outPutView.printLottos(lottos);
+        WinningNumbersResponse winningNumbersResponse = inputView.getWinningNumbersResponse();
     }
 
-    private InputPriceDto temp() {
+    private InputPriceDto inputPrice() {
         InputPriceDto dto;
         while (true) {
             try {
