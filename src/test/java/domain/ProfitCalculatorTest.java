@@ -21,9 +21,17 @@ class ProfitCalculatorTest {
         WinningRecordDto winningRecord = getWinningRecordDto();
         InputPriceDto inputPriceDto = InputPriceDto.of(8000);
 
-        double profitRate = profitCalculator.calculateProfit(winningRecord, inputPriceDto);
+        String profitRate = profitCalculator.calculateProfit(winningRecord, inputPriceDto);
 
-        assertThat(profitRate).isEqualTo(62.5);
+        assertThat(profitRate).isEqualTo("62.5");
+    }
+
+    @Test
+    @DisplayName("당첨 기록으로 총 상금을 계산")
+    public void givenWinningRecordWhenGetTotalPrizeThenTotalPrize() {
+        WinningRecordDto winningRecord = getWinningRecordDto();
+        double totalPrize = profitCalculator.getTotalPrize(winningRecord.getWinningRecord());
+        assertThat(5000.0).isEqualTo(totalPrize);
     }
 
     private WinningRecordDto getWinningRecordDto() {
