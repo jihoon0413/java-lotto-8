@@ -14,4 +14,12 @@ public class WinningNumbersResponse {
     public static WinningNumbersResponse of(List<Integer> winningNumbers, int bonusNumber) {
         return new WinningNumbersResponse(winningNumbers, bonusNumber);
     }
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }
