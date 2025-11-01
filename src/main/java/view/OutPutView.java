@@ -3,7 +3,6 @@ package view;
 import domain.enums.Rank;
 import dto.WinningRecordDto;
 import java.text.DecimalFormat;
-import java.util.Formatter;
 import java.util.List;
 import java.util.Map;
 import lotto.Lotto;

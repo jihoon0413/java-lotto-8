@@ -4,9 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import dto.InputPriceDto;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import lotto.Lotto;
 
 public class LottoMachine {
@@ -16,21 +14,20 @@ public class LottoMachine {
         List<Lotto> lottos = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
-            lottos.add(new Lotto(createNumbers()));
+            List<Integer> lottoNumbers = createNumbers();
+            lottos.add(new Lotto(lottoNumbers));
         }
         return lottos;
     }
 
     public List<Integer> createNumbers() {
-        Set<Integer> set = new HashSet<>();
-        while (set.size() != 6 ) {
-            set.add(Randoms.pickNumberInRange(1,45));
-        }
-        return sorting(new ArrayList<>(set));
+        return sorting(Randoms.pickUniqueNumbersInRange(1,45,6));
     }
 
-    public List<Integer> sorting(List<Integer> numbers) {
-        Collections.sort(numbers);
-        return numbers;
+    private List<Integer> sorting(List<Integer> numbers) {
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortedNumbers);
+        return sortedNumbers;
+
     }
 }
