@@ -35,4 +35,30 @@ class WinningNumberMatcherTest {
         myLotto.add(new Lotto(List.of(1,2,8,9,10,11)));
         return myLotto;
     }
+
+    @Test
+    @DisplayName("하나의 로또에 당첨된 번호의 갯수를 구하는 기능 테스트")
+    public void givenLottoAndWinningNumbersWhenCountMatchNumThenMatchCount() {
+        List<Integer> myLotto1 = List.of(1,2,3,4,5,6);
+        List<Integer> myLotto2 = List.of(1,2,3,4,5,7);
+        List<Integer> myLotto3 = List.of(1,2,3,7,8,9);
+        List<Integer> winningNumbers = List.of(1,2,3,4,5,6);
+
+        assertThat(6).isEqualTo(matcher.countMatchNum(myLotto1, winningNumbers));
+        assertThat(5).isEqualTo(matcher.countMatchNum(myLotto2, winningNumbers));
+        assertThat(3).isEqualTo(matcher.countMatchNum(myLotto3, winningNumbers));
+
+    }
+
+    @Test
+    @DisplayName("보너스 번호의 일치 여부 확인 테스트")
+    public void givenLottoAndBonusNumWhenCheckMatchBonusThenBoolean() {
+        List<Integer> myLotto1 = List.of(1,2,3,4,5,7);
+        List<Integer> myLotto2 = List.of(1,2,3,4,5,6);
+        int bonusNum = 7;
+
+        assertThat(true).isEqualTo(matcher.checkMatchBonus(myLotto1,bonusNum));
+        assertThat(false).isEqualTo(matcher.checkMatchBonus(myLotto2,bonusNum));
+
+    }
 }
