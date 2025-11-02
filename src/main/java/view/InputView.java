@@ -18,17 +18,12 @@ public class InputView {
             try{
                 System.out.println("구입금액을 입력해 주세요.");
                 String input = Console.readLine();
-                validate(input);
+                validator.validatePriceInput(input);
                 return InputPriceDto.of(Integer.parseInt(input));
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
-    }
-
-    private void validate(String input) {
-        validator.validateNumber(input);
-        validator.validateThousandUnit(Integer.parseInt(input));
     }
 
     public WinningNumbersResponse getWinningNumbersResponse() {

@@ -71,6 +71,35 @@ class ValidatorTest {
                 () -> validator.validateWinningNumbersStringInput(str2));
         assertEquals("[ERROR] 구분자를 확인해 주세요.", ex1.getMessage());
         assertEquals("[ERROR] 구분자의 형식을 확인해 주세요.", ex2.getMessage());
+    }
 
+    @Test
+    @DisplayName("잘못된 길이의 당첨 번호가 주어졌을 때 에러 발생")
+    public void givenWrongSizeWinningNumbersWhenValidateThenException() {
+        String[] input1 = {"1","2","3","4","5"};
+        String[] input2 = {"1","2","3","4","5","6","7"};
+
+        IllegalArgumentException ex1 = assertThrows(IllegalArgumentException.class,
+                () -> validator.validateLottoNumberCount(input1));
+        IllegalArgumentException ex2 = assertThrows(IllegalArgumentException.class,
+                () -> validator.validateLottoNumberCount(input2));
+
+        assertEquals("[ERROR] 6자리의 로또 번호를 입력하세요", ex1.getMessage());
+        assertEquals("[ERROR] 6자리의 로또 번호를 입력하세요", ex2.getMessage());
+    }
+
+    @Test
+    @DisplayName("당첨 번호에서 중복이 있을 경우 에러 발생")
+    public void givenDuplicatedWinningNumbersWhenValidateThenException() {
+        String[] input1 = {"1","1","2","3","4","5"};
+        String[] input2 = {"1","1","2","2","3","4"};
+
+        IllegalArgumentException ex1 = assertThrows(IllegalArgumentException.class,
+                () -> validator.validateDuplicateWinningNumbers(input1));
+        IllegalArgumentException ex2 = assertThrows(IllegalArgumentException.class,
+                () -> validator.validateDuplicateWinningNumbers(input2));
+
+        assertEquals("[ERROR] 중복되지 않은 6자리 숫자를 입력하세요", ex1.getMessage());
+        assertEquals("[ERROR] 중복되지 않은 6자리 숫자를 입력하세요", ex2.getMessage());
     }
 }
