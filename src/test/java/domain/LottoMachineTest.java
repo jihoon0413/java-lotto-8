@@ -3,7 +3,7 @@ package domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import dto.InputPriceDto;
+import dto.PaymentResponse;
 import java.util.List;
 import lotto.Lotto;
 import org.junit.jupiter.api.DisplayName;
@@ -15,10 +15,10 @@ class LottoMachineTest {
 
     @Test
     @DisplayName("금액이 주어졌을 때 금액에 맞는 개수의 로또가 오류 없이 생성")
-    public void givenInputPriceDtoWhenCreateLottosThenLottoList() {
-        InputPriceDto inputPriceDto = InputPriceDto.of(8000);
+    public void givenPaymentResponseWhenCreateLottosThenLottoList() {
+        PaymentResponse paymentResponse = PaymentResponse.of(8000);
 
-        List<Lotto> result = lottoMachine.createLottos(inputPriceDto);
+        List<Lotto> result = lottoMachine.createLottos(paymentResponse.getPayment());
 
         assertThat(result.size()).isEqualTo(8);
 
