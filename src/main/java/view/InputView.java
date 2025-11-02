@@ -3,7 +3,7 @@ package view;
 import camp.nextstep.edu.missionutils.Console;
 import domain.Splitter;
 import domain.Validator;
-import dto.InputPriceDto;
+import dto.PaymentResponse;
 import dto.WinningNumbersResponse;
 import java.util.Arrays;
 import java.util.List;
@@ -13,13 +13,13 @@ public class InputView {
     private final Validator validator = new Validator();
     private final Splitter splitter = new Splitter();
 
-    public InputPriceDto getInputPrice() {
+    public PaymentResponse getPaymentResponse() {
         while(true) {
             try{
                 System.out.println("구입금액을 입력해 주세요.");
                 String input = Console.readLine();
-                validator.validatePriceInput(input);
-                return InputPriceDto.of(Integer.parseInt(input));
+                validator.validatePaymentResponse(input);
+                return PaymentResponse.of(Integer.parseInt(input));
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }

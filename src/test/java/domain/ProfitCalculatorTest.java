@@ -1,10 +1,9 @@
 package domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import domain.enums.Rank;
-import dto.InputPriceDto;
+import dto.PaymentResponse;
 import dto.WinningRecordDto;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +18,7 @@ class ProfitCalculatorTest {
     @DisplayName("투입한 금액과 당첨 금액을 통해 수익률을 계산")
     public void givenWinningRecordWhenCalculateThenBenefitRate() {
         WinningRecordDto winningRecord = getWinningRecordDto();
-        InputPriceDto inputPriceDto = InputPriceDto.of(8000);
+        PaymentResponse inputPriceDto = PaymentResponse.of(8000);
 
         String profitRate = profitCalculator.calculateProfit(winningRecord, inputPriceDto);
 

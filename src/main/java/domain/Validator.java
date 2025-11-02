@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class Validator {
 
-    public void validatePriceInput(String input) {
+    public void validatePaymentResponse(String input) {
         validateNumber(input);
         validateThousandUnit(Integer.parseInt(input));
     }

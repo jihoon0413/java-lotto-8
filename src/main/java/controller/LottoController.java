@@ -1,6 +1,6 @@
 package controller;
 
-import dto.InputPriceDto;
+import dto.PaymentResponse;
 import dto.WinningNumbersResponse;
 import dto.WinningRecordDto;
 import java.util.List;
@@ -17,8 +17,8 @@ public class LottoController {
 
     public void run() {
         // 금액 입력, 로또 생성 및 출력
-        InputPriceDto inputPrice = inputView.getInputPrice();
-        List<Lotto> lottos = lottoService.publishLotto(inputPrice);
+        PaymentResponse paymentResponse = inputView.getPaymentResponse();
+        List<Lotto> lottos = lottoService.publishLotto(paymentResponse.getPayment());
         outPutView.printLottos(lottos);
 
         // 당첨 번호, 보너스 번호 입력
@@ -26,7 +26,7 @@ public class LottoController {
 
         // 당첨 내역, 수익률 계산
         WinningRecordDto winningRecord = lottoService.getWinningRecord(winningNumbersResponse, lottos);
-        String profitRate = lottoService.calculateProfitRate(winningRecord, inputPrice);
+        String profitRate = lottoService.calculateProfitRate(winningRecord, paymentResponse);
 
         // 당첨 내역, 수익률 출력
         outPutView.printResult(winningRecord, profitRate);
