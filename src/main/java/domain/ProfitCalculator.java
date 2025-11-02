@@ -8,10 +8,9 @@ import java.util.Set;
 
 public class ProfitCalculator {
 
-    public String calculateProfit(WinningRecordDto winningRecord, PaymentResponse inputPrice) {
+    public double calculateProfit(WinningRecordDto winningRecord, PaymentResponse inputPrice) {
         double totalPrize = getTotalPrize(winningRecord.getWinningRecord());
-        double profitRate = totalPrize / inputPrice.getPayment() * 100;
-        return String.format("%.1f", profitRate);
+        return totalPrize / inputPrice.getPayment() * 100;
     }
 
     public double getTotalPrize(Map<Rank, Integer> winningRecord) {

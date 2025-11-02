@@ -23,7 +23,7 @@ public class LottoService {
         return winningNumberMatcher.matchMyLotto(winningInfo, myLotto);
     }
 
-    public String calculateProfitRate(WinningRecordDto winningInfo, PaymentResponse inputPrice) {
+    public double calculateProfitRate(WinningRecordDto winningInfo, PaymentResponse inputPrice) {
         return profitCalculator.calculateProfit(winningInfo, inputPrice);
     }
 

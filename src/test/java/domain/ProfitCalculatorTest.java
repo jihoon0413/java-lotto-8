@@ -20,9 +20,9 @@ class ProfitCalculatorTest {
         WinningRecordDto winningRecord = getWinningRecordDto();
         PaymentResponse inputPriceDto = PaymentResponse.of(8000);
 
-        String profitRate = profitCalculator.calculateProfit(winningRecord, inputPriceDto);
+        double profitRate = profitCalculator.calculateProfit(winningRecord, inputPriceDto);
 
-        assertThat(profitRate).isEqualTo("62.5");
+        assertThat(profitRate).isEqualTo(62.5);
     }
 
     @Test

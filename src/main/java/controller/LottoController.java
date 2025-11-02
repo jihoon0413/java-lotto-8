@@ -26,7 +26,7 @@ public class LottoController {
 
         // 당첨 내역, 수익률 계산
         WinningRecordDto winningRecord = lottoService.getWinningRecord(winningNumbersResponse, lottos);
-        String profitRate = lottoService.calculateProfitRate(winningRecord, paymentResponse);
+        double profitRate = lottoService.calculateProfitRate(winningRecord, paymentResponse);
 
         // 당첨 내역, 수익률 출력
         outPutView.printResult(winningRecord, profitRate);

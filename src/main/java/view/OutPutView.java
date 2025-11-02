@@ -20,11 +20,11 @@ public class OutPutView {
         System.out.println(sb);
     }
 
-    public void printResult(WinningRecordDto winningRecord, String profitRate) {
+    public void printResult(WinningRecordDto winningRecord, double profitRate) {
         StringBuilder sb = new StringBuilder();
         sb.append("당첨 통계\n---\n");
         sb.append(printRankResult(winningRecord.getWinningRecord()));
-        sb.append("총 수익률은 ").append(profitRate).append("%입니다.");
+        sb.append("총 수익률은 ").append(String.format("%.1f", profitRate)).append("%입니다.");
         System.out.println(sb);
     }
 
